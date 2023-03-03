@@ -1,0 +1,22 @@
+<form action="listaproduto.php" method="post" class="ativos">
+            <input type="radio" name="ativo" value="s" required onclick="submit()" <?=$ativo=='s'?"checked":""?>>DISPONIVEL <br>
+            <input type="radio" name="ativo" value="n" required onclick="submit()" <?=$ativo=='n'?"checked":""?>>INDISPONIVEL
+</form>
+
+$sql = "SELECT * FROM produtos WHERE pro_ativo = 's'";
+$resultado = mysqli_query($link, $sql);
+$ativo = 's';
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $ativo = $_POST['ativo'];
+    
+    if ($ativo == 's'){
+        $sql = "SELECT * FROM produtos WHERE pro_ativo = 's';";
+        $resultado = mysqli_query($link, $sql);
+
+    }
+    else{
+        $sql = "SELECT * FROM produtos WHERE pro_ativo = 'n';";
+        $resultado = mysqli_query($link, $sql);
+    }
+}

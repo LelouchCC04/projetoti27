@@ -41,6 +41,8 @@ while($tbl = mysqli_fetch_array($resultado)){
     <title>ALTERAR USUARIO</title>
 </head>
 <body>
+<a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
+    
     <div>
         <form action="alterausuario.php" method="post">
         <input type="hidden" name="id" value="<?=$id?>" > <!-- coleta id ao carrega a página de forma oculta-->

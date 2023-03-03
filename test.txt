@@ -1,132 +1,22 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST["nome"];
-    $descricao = $_POST["descricao"];
-    $categoria = $_POST["categoria"];
-    $img1 = $_POST['img1'];
-    $img2 = $_POST['img2'];
-    $estoque = $_POST['estoque'];
-    $preco = $_POST['preco'];
-    include("conectadb.php");
+<form action="listaproduto.php" method="post" class="ativos">
+            <input type="radio" name="ativo" value="s" required onclick="submit()" <?=$ativo=='s'?"checked":""?>>DISPONIVEL <br>
+            <input type="radio" name="ativo" value="n" required onclick="submit()" <?=$ativo=='n'?"checked":""?>>INDISPONIVEL
+</form>
 
-    if ($img1 == "") $img1 = "semimg.gif";
-    if ($img1 == "") $img2 = "semimg.gif";
+$sql = "SELECT * FROM produtos WHERE pro_ativo = 's'";
+$resultado = mysqli_query($link, $sql);
+$ativo = 's';
 
-    $sql = "INSERT INTO produtos(pro_nome,pro_estoque,pro_preco,img1,img2,pro_descricao,pro_categoria) values ('$nome','$estoque','$preco','$img1','$img2','$descricao','$categoria')";
-    mysqli_query($link, $sql);
-    header("Location: listaprodutos.php");
-    exit();
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $ativo = $_POST['ativo'];
     
+    if ($ativo == 's'){
+        $sql = "SELECT * FROM produtos WHERE pro_ativo = 's';";
+        $resultado = mysqli_query($link, $sql);
+
+    }
+    else{
+        $sql = "SELECT * FROM produtos WHERE pro_ativo = 'n';";
+        $resultado = mysqli_query($link, $sql);
+    }
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastra Produtos</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-
-<body>
-<a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
-
-    <div>
-        <form action="cadastraprodutos.php" method="POST">
-            <label>NOME</label>
-            <input type="text" name="nome" maxlength="25">
-            <br><br>
-            <label>DESCRICAO</label>
-            <input type="text" name="descricao" maxlength="25">
-            <br><br>
-            <label>CATEGORIA</label>
-            <input type="text" name="categoria" maxlength="25">
-            <br><br>
-            <label>IMAGEM I</label>
-            <input type="file" name="file1" id="img1" onchange="foot1()">
-            <img src="img/semimg.gif" width="50px" id="foto1a">
-            <br><br>
-            <label>IMAGEM II</label>
-            <input type="file" name="file2" id="img2" onchange="foot2()">
-            <img src="img/semimg.gif" width="50px" id="foto1a">
-            <br><br>
-            <label>ESTOQUE</label>
-            <input type="number" name="estoque" min="0" required>
-            <br><br>
-            <label>PREÇO</label>
-            <input type="number" name="preco" min="0" step="0.01" required>
-            <br><br>
-            <input type="submit" value="SALVAR">
-        </form>
-    </div>
-
-</body>
-<script> 
-    function foto1() {
-        document.getElementbyID("foto1a").src = "img/" + (document.getElementById(img1).value).slice(12);
-    }
-
-    function foto2() {
-        document.getElementById("foto2a").src = "img/" + (document.getElementById("img2").value).slice(12);
-    }
-</script>
-
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LISTA PRODUTOS</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-
-<body>
-    <a href="homesistema.html"><input type="button" name="voltarhomesistema" value="HOME SISTEMA"></a>
-    <div>
-        <table border="1">
-            <tr>
-                <th>NOME</th>
-                <th>DESCRICAO</th>
-                <th>CATEGORIA</th>
-                <th>IMAGEM</th>
-                <th>IMAGEM</th>
-                <th>ESTOQUE</th>
-                <th>VALOR</th>
-                <th>ALTERAR</th>
-                <th>EXCLUIR</th>
-            </tr>
-            <?php
-
-            include("conectadb.php");
-            $sql = "SELECT * FROM produtos";
-            $resultado = mysqli_query($link, $sql);
-
-            while ($tbl = mysqli_fetch_array($resultado)) {
-            ?>
-                <tr>
-                    <td><?= $tbl[1] ?></td>
-                    <td><?= $tbl[4] ?></td>
-                    <td><?= $tbl[5] ?></td>
-                    <td><?= $tbl[6] ?></td>
-                    <td><?= $tbl[7] ?></td>
-                    <td><?= $tbl[2] ?></td>
-                    <td>R$ <?= $tbl[3] ?></td>
-                    <td><a href="alterarproduto.php?id=<?= $tbl[0] ?>"><input type="button" value="ALTERAR"></a></td>
-                    <td><a href="excluirprodutos.php?id=<?= $tbl[0] ?>"><input type="button" value="EXCLUIR"></a></td>
-                </tr>
-            <?php
-            }
-            ?>
-        </table>
-    </div>
-</body>
-
-</html>

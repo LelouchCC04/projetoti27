@@ -62,7 +62,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             <p></p>
             <input type="password" id="senha" name="password" placeholder="Senha">
             <!-- abaixo está a função onclick chamando o script de javascript Il VVVVVVVVV -->
-            <img id="olinho" onclick="mostrarsenha()" src="assets/eye.svg">
+            <!-- <img id="olinho" onclick="mostrarsenha()" src="assets/eye.svg"> -->
             <p></p>
             <input type="submit" name="login" value="LOGIN">
         </form>

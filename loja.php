@@ -17,7 +17,7 @@ $ativo = "s";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loja.css">
-    <title>LISTA PRODUTO</title>
+    <title>LOJA</title>
 </head>
 <body>
     <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
@@ -45,10 +45,11 @@ $ativo = "s";
                             <td><?= $tbl[0]?></td>
                             <td><?= $tbl[4]?></td>
                             <td><?= $tbl[1]?></td>
-                            <td><input type="numeber" name="quantidade" id="quantidade" ></td>
+                            <td><input type="numeber" name="quantidade" id="quantidade"></td>
                             <!-- linha abaixo converte formato da $tbl[3] usando 2 casas após a virgula e aplicando , ao lugar de ponto -->
                             <td>R$ <?= number_format($tbl[3],2,',','.')?></td>
-                            <td><div><img src="/img/<?=$tbl[6]?>"width="100"></div></td>
+                            <td><img src="data:image/jpeg;base64,<?= $tbl[6]?>" alt="" width="100px" height="100px"></td>
+
                             <td><a href="addcarrinho.php?id=<?= $tbl[0] && $tbl[2]?>"><input type="button" value="ADICIONAR CARRINHO"></a></td>
                             
                         </tr>

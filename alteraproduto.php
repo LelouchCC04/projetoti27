@@ -10,9 +10,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $quantidade	= $_POST['quantidade'];
     $preco = $_POST['preco'];
     $ativo = $_POST['ativo'];
-    
+
+    # CRITOGRAFRA A FOTO PARA O BANCO DE DADOS
+    if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
+        $imagem_temp = $_FILES['imagem']['tmp_name'];
+        $imagem = file_get_contents($imagem_temp);
+        $imagem_base64 = base64_encode($imagem);
+    }
+
     #Instrução SQL para atualização de usuario e senha
-    $sql = "UPDATE produtos SET nome='$nome', pro_descricao = '$descricao', pro_quantidade='$quantidade',pro_preco = '$preco', pro_ativo= '$ativo' WHERE pro_id ='$id'";
+    $sql = "UPDATE produtos SET nome='$nome', pro_descricao = '$descricao', pro_quantidade='$quantidade',pro_preco = '$preco', pro_ativo= '$ativo', imagem1 = '$imagem_base64' WHERE pro_id ='$id'";
     mysqli_query($link, $sql);
     header("Location: listaproduto.php");
     echo"<script>window.alert('Produto alterado com Sucesso!');</script>";
@@ -49,7 +56,7 @@ while($tbl = mysqli_fetch_array($resultado)){
 <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
 
     <div>
-        <form action="alteraproduto.php" method="post">            
+        <form action="alteraproduto.php" method="post" enctype="multipart/form-data">            
             <input type="hidden" name="id" value="<?=$id?>"> <!-- coleta id ao carrega a página de forma oculta-->
             <label>NOME</label>
             <input type="text" name="nome" value="<?=$nome?>" required> <!-- Coleta o nome do produto e preenche a txtbox-->
@@ -60,7 +67,8 @@ while($tbl = mysqli_fetch_array($resultado)){
             <label>PREÇO</label>
             <input type="number" name="preco" value="<?=$preco?>" required> <!-- Coleta o preço do produto e preenche a txtbox-->
             <br></br>        
-            
+            <label>IMAGEM</label>
+            <input type="file" name="imagem" id="imagem" onchange="foto1()">
             
             <label>Status: <?=$check = ($ativo == 's')? "ATIVO": "DESATIVO"?></label>
             <br>

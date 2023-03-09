@@ -5,6 +5,13 @@
         $pro_descricao	= $_POST["descricao"];
         $pro_quantidade	= $_POST["quantidade"];
         $pro_preco = $_POST['preco'];
+        
+        # CRITOGRAFRA A FOTO PARA O BANCO DE DADOS
+        if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
+            $imagem_temp = $_FILES['imagem']['tmp_name'];
+            $imagem = file_get_contents($imagem_temp);
+            $imagem_base64 = base64_encode($imagem);
+        }
 
         # Faz a conecção com o conectadb.php
         Include("conectadb.php");
@@ -20,7 +27,7 @@
             echo"<script>window.alert('PRODUTO JÁ CADASTRADO!');</script>";
         }
         else{
-            $sql = "INSERT INTO produtos(pro_descricao, pro_quantidade, pro_preco, nome, pro_ativo) VALUES('$pro_descricao', '$pro_quantidade','$pro_preco', '$nome','s')";
+            $sql = "INSERT INTO produtos(pro_descricao, pro_quantidade, pro_preco, nome, pro_ativo, imagem1) VALUES('$pro_descricao', '$pro_quantidade','$pro_preco', '$nome','s', '$imagem_base64')";
             mysqli_query($link,$sql);
             header("Location: listaproduto.php");
         }
@@ -44,7 +51,7 @@
     <div>
 
         
-        <form action="cadastraproduto.php" method="POST">
+        <form action="cadastraproduto.php" method="POST" enctype="multipart/form-data">
             <h1>CADASTRO DE PRODUTOS</h1>
             <input type="text" name="nome" id="nome" placeholder="NOME DO PRODUTO" required>
             <br><br>
@@ -56,9 +63,8 @@
             <br><br><br>
 
             <label>IMAGEM</label>
-            <input type="file" name="foto1" id="img1" onchange="foto1()">
-            <img src="img/semfoto.png" width="100px" id="foto1a">
-
+            <input type="file" name="imagem" id="imagem" onchange="foto1()">
+            
             <br>
             <input type="submit" name="cadastrar" id="cadastrar" value="CADASTRAR">
         </form>

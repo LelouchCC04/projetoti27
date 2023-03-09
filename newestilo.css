@@ -7,6 +7,7 @@ body {
   }
 
   #menuhome {
+    
     background-color: #907297;
     border: none;
     border-radius: 3px;
@@ -81,6 +82,8 @@ body {
     width: 95%;
     
   }
+  
+
 
   #olinho {
     cursor: pointer;

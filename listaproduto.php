@@ -66,7 +66,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <td><?= $tbl[2]?></td>
                         <!-- linha abaixo converte formato da $tbl[3] usando 2 casas após a virgula e aplicando , ao lugar de ponto -->
                         <td>R$ <?= number_format($tbl[3],2,',','.')?></td>
-                        <td><div><img src="/img/<?=$tbl[6]?>"width="100"></div></td>
+                        <td><img src="data:image/jpeg;base64,<?= $tbl[6]?>" alt="" width="100px" height="100px"></td>
+
                         <td><a href="alteraproduto.php?id=<?= $tbl[0]?>"><input type="button" value="ALTERAR"></a></td>
                         <!-- tbl[5] verifica se é s que está vindo do banco de dados, se sim. Escreva SIM senão escreva NÃO -->
                         <td><?= $check = ($tbl[5] == 's')?"SIM":"NÃO"?></td>

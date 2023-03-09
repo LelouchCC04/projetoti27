@@ -17,16 +17,15 @@ input[type="button"], input[type="submit"] {
     text-decoration: none;
     width: 100%;
 }
-
 input:hover {
     border-top-color: #4aa6c2;
     background: #4aa6c2;
     color: #cfc017;
-    }
+}
 input:active {
     border-top-color: #224b66;
     background: #224b66;
-    }
+}
 
 form{
     background-color: rgb(205, 191, 211);

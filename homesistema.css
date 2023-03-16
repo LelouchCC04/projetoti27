@@ -1,9 +1,11 @@
-body{
-    background-color: rgb(204, 54, 84);
-    text-align: center;
-    margin-top: 250px;
-}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(29, 0, 67);
+  }
 
+/*
 input {
     border-top: 1px solid #234357;
     background: #48bd9c;
@@ -25,7 +27,21 @@ input {
     font-family: Georgia, serif;
     text-decoration: none;
     vertical-align: middle;
-    }
+    }*/
+
+    input[type="button"], input[type="submit"] {
+        background-color: #683e72;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 2px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+      }
 input:hover {
     border-top-color: #4aa6c2;
     background: #4aa6c2;

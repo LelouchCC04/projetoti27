@@ -28,7 +28,7 @@
             $sql = "INSERT INTO clientes (cli_nome, cli_cpf, cli_senha, cli_datanasc, cli_telefone, cli_logradouro, cli_numero, cli_cidade, cli_ativo) VALUES('$nome','$cpf', '$senha',STR_TO_DATE('$datanasc','%Y-%m-%d'), '$telefone', '$logradouro','$numero','$cidade', 's')";// STR_TO_DATE('$datanasc_formatada','%Y-%m-%d')
             mysqli_query($link,$sql);
             // echo($datanasc);
-            header("Location: listacliente.php");
+            header("Location: ./areacliente/logincliente.php");
         }
     }
 ?>
@@ -39,12 +39,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="newestilo.css">
+        <link rel="stylesheet" href="./areacliente/newestiloloja.css">
         <title>CADASTRAR CLIENTES</title>
     </head>
 
     <body>
-        <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
+        <a href="./areacliente/loja.php"><input type="button" id="menuloja" value="LOJA"></a>
+        <a href="./areacliente/logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
+
         <div>
             <form action="cadastracliente.php" method="post">
                 <label>NOME</label>

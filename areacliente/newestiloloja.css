@@ -6,6 +6,7 @@ body {
     background-color: rgb(29, 0, 67);
   }
 
+
   #menuhome {
     
     background-color: #907297;
@@ -47,14 +48,20 @@ body {
     text-decoration: none;
     width: 100%;
   }
+  input[type="button"]:hover {
+    border-top-color: #4aa6c2;
+    background: #4aa6c2;
+    /* color: #cfc017; */
+  }
+  input:active {
+      border-top-color: #224b66;
+      background: #224b66;
+  }
 
-  
-
-  /*
   #menuhome:hover {
     background-color: #ab98af;
   }
-  */
+
   form{
     background-color: rgb(205, 191, 211);
     border-radius: 10px;
@@ -86,6 +93,8 @@ body {
     
   }
   
+
+
   #olinho {
     cursor: pointer;
     height: 20px;

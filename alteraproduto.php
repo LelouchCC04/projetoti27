@@ -50,7 +50,7 @@ while($tbl = mysqli_fetch_array($resultado)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="newestilo.css">
 
-    <title>ALTERAR USUARIO</title>
+    <title>ALTERAR PRODUTO</title>
 </head>
 <body>
 <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>

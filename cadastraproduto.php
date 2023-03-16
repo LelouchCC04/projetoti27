@@ -36,7 +36,7 @@
 ?>
 <!-- pro_id	,pro_descricao,	pro_quantidade,	pro_preco	 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 
     <meta charset="UTF-8">

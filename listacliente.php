@@ -37,7 +37,9 @@
         <title>LISTA PRODUTO</title>
     </head>
     <body>
-        <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
+        <nav>
+            <a href="homesistema.html"><input class="navs" type="button" id="menuhome" value="HOME SISTEMA"></a>
+        </nav>
         <form action="listacliente.php" method="post">
             <!-- Botões que validam se o produto é listado somente ativos ou inativos-->
             <!-- onclick="submit()" é um javascript que já faz um submit na página usando o navegador como recurso -->

@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         function mostrarsenha(){
             var tipo = document.getElementById("senha");
             if(tipo.type == "password"){
-                tipo.type ="text" ;
+                tipo.type ="text";
 
             }
             else{

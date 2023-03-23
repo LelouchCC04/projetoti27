@@ -74,7 +74,7 @@
                 document.getElementById("foto1a").src = "img/"(document.getElementById("img1").value).slice(12);
             }
         </script>
-
+ 
     </div>
 </body>
 </html>

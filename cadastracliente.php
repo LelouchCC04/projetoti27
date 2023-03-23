@@ -44,11 +44,11 @@
     </head>
 
     <body>
-        <a href="./areacliente/loja.php"><input type="button" id="menuloja" value="LOJA"></a>
-        <a href="./areacliente/logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
-
+        
         <div>
+
             <form action="cadastracliente.php" method="post">
+                <h1>Cadastra-se</h1>
                 <label>NOME</label>
                 <input type="text" name="nome" required>
                 <br></br>
@@ -76,6 +76,8 @@
                 <br>
                 <input type="submit" value="CADASTRAR">
 
+                <h2>Login</h2>
+                <a href="./areacliente/logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
             </form>
         
         </div>

@@ -5,31 +5,6 @@ body {
   background-color: rgb(29, 0, 67);
 }
 
-input[type="button"],
-input[type="submit"] {
-  background-color: #683e72;
-  border: none;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 2px;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
-}
-
-input:hover {
-  border-top-color: #4aa6c2;
-  background: #4aa6c2;
-  /* color: #cfc017; */
-}
-
-input:active {
-  border-top-color: #224b66;
-  background: #224b66;
-}
 
 form {
   background-color: rgb(29, 0, 67);
@@ -138,16 +113,13 @@ h1 {
   padding: 15px;
   text-align: center;
   background-color: rgb(109, 181, 184);
-  border: 10px dashed rgb(51, 47, 47);
+  /* border: 10px dashed rgb(51, 47, 47); */
   border-radius: 20px;
   width: 700px;
   margin: auto;
   font-family: 'Times New Roman', Times, serif;
   margin-top: 10px;
-
 }
-
-
 
 input[type="text"],
 input[type="password"],
@@ -165,6 +137,17 @@ input[type="date"] {
   width: 95%;
 
 }
+input[type="button"]:hover{
+  border-top-color: #db1edb;
+  background: #63dd63;
+  /* color: #cfc017; */
+}
+
+input:active {
+  border-top-color: #224b66;
+  background: #224b66;
+}
+
 
 #olinho {
   cursor: pointer;
@@ -174,7 +157,6 @@ input[type="date"] {
   position: relative;
   width: 20px;
 }
-
 
 
 .button-10 {
@@ -199,8 +181,6 @@ input[type="date"] {
   box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
 }
-
-
 
 table {
   border-collapse: collapse;

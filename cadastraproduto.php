@@ -17,7 +17,7 @@
         Include("conectadb.php");
 
         #VERIFICA projeto EXISTENTE
-        $sql ="SELECT COUNT(pro_id) from produtos WHERE nome = '$nome'";
+        $sql ="SELECT COUNT(pro_id) from produtos WHERE pro_nome = '$nome'";
         $resultado = mysqli_query($link,$sql);
         while($tbl = mysqli_fetch_array($resultado)){
             $cont = $tbl[0];
@@ -27,7 +27,7 @@
             echo"<script>window.alert('PRODUTO JÁ CADASTRADO!');</script>";
         }
         else{
-            $sql = "INSERT INTO produtos(pro_descricao, pro_quantidade, pro_preco, nome, pro_ativo, imagem1) VALUES('$pro_descricao', '$pro_quantidade','$pro_preco', '$nome','s', '$imagem_base64')";
+            $sql = "INSERT INTO produtos(pro_descricao, pro_quantidade, pro_preco, pro_nome, pro_ativo, imagem1) VALUES('$pro_descricao', '$pro_quantidade','$pro_preco', '$nome','s', '$imagem_base64')";
             mysqli_query($link,$sql);
             header("Location: listaproduto.php");
         }

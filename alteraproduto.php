@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     }
 
     #Instrução SQL para atualização de usuario e senha
-    $sql = "UPDATE produtos SET nome='$nome', pro_descricao = '$descricao', pro_quantidade='$quantidade',pro_preco = '$preco', pro_ativo= '$ativo', imagem1 = '$imagem_base64' WHERE pro_id ='$id'";
+    $sql = "UPDATE produtos SET pro_nome='$nome', pro_descricao = '$descricao', pro_quantidade='$quantidade',pro_preco = '$preco', pro_ativo= '$ativo', imagem1 = '$imagem_base64' WHERE pro_id ='$id'";
     mysqli_query($link, $sql);
     header("Location: listaproduto.php");
     echo"<script>window.alert('Produto alterado com Sucesso!');</script>";

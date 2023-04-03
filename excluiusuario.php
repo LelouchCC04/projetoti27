@@ -1,24 +1,24 @@
 <?php
-include("conectadb.php");
+    include("conectadb.php");
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $id = $_POST['id'];
-    $sql = "DELETE FROM usuarios WHERE usu_id = '$id'";
-    mysqli_query($link, $sql);
-    header("Location: listausuario.php");
-    exit();
-}
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $id = $_POST['id'];
+        $sql = "DELETE FROM usuarios WHERE usu_id = '$id'";
+        mysqli_query($link, $sql);
+        header("Location: listausuario.php");
+        exit();
+    }
 
-if(!isset($_GET['id'])){
-    header("Location: listausuario.php");
-    exit();
-}
-$id = $_GET['id'];
-$sql = "SELECT usu_nome FROM usuarios WHERE usu_id = '$id'";
-$resultado = mysqli_query($link, $sql);
-while($tbl = mysqli_fetch_array($resultado)){
-    $nome = $tbl[0];
-}
+    if(!isset($_GET['id'])){
+        header("Location: listausuario.php");
+        exit();
+    }
+    $id = $_GET['id'];
+    $sql = "SELECT usu_nome FROM usuarios WHERE usu_id = '$id'";
+    $resultado = mysqli_query($link, $sql);
+    while($tbl = mysqli_fetch_array($resultado)){
+        $nome = $tbl[0];
+    }
 
 ?>
 

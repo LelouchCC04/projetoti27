@@ -14,81 +14,74 @@ $ativo = "s";
 
 <!DOCTYPE html>
 <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="loja.css">
+        <title>LOJA</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="loja.css">
-    <title>LOJA</title>
-</head>
-
-<body>
-    <?php 
-        if(isset($_SESSION['idcliente'])){
-        ?>
-            <h1>BOM DIA, <?= $_SESSION['nomecliente']; ?>!</h1>
-            <form action="logout.php" method="post">
-                <a href="carrinho.php"><input type="button" value="AREA CLIENTE" <?=$_SESSION['idcliente']?>></a>
-                <input type="submit" value="LOGOUT">
-            </form>
-        
-        <?php
-        }
-        else{        
+    <body>
+        <!-- COLETA NOME DO USUARIO NA VARIAVEL DE SESSÃO-->
+        <?php 
+            if(isset($_SESSION['idcliente'])){
             ?>
-            <form id="formloja" action="logout.php" method="post">
-                <a href="../cadastracliente.php"><input type="button" id="cadastracliente" value="CADASTRAR"></a>
-                <a href="./logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
-            </form>
-
-        <?php
-        }
-        
-        ?>
-    <!-- COLETA NOME DO USUARIO NA VARIAVEL DE SESSÃO-->
-
-    
-
-
-
-    <form action="loja.php" id="loja" method="post">
-
-        <div class="container">
-            <table border="1">
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                    <th>DESCRIÇÃO</th>      
-                    <th>PRECO</th>
-                    <th>IMAGEM</th>
-                    <th>VER PRODUTO</th>
-
-
-                </tr>
-                <?php
-                #Preenchimento da tabela com os dados do banco
-                while ($tbl = mysqli_fetch_array($resultado)) {
+                <h1>BOM DIA, <?= $_SESSION['nomecliente']; ?>!</h1>
+                <form action="logout.php" method="post">
+                    <a href="carrinho.php"><input type="button" value="CARRINHO" <?=$_SESSION['idcliente']?>></a>
+                    <input type="submit" value="LOGOUT">
+                </form>
+            
+            <?php
+            }
+            else{        
                 ?>
+                <form id="formloja" action="logout.php" method="post">
+                    <a href="cadastracliente.php"><input type="button" id="cadastracliente" value="CADASTRAR"></a>
+                    <a href="logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
+                </form>
+
+            <?php
+            }
+            
+            ?>
+
+        <form action="loja.php" id="loja" method="post">
+
+            <div class="container">
+                <table border="1">
                     <tr>
-                        <td><?= $tbl[0] ?></td>
-                        <td><?= $tbl[4] ?></td>
-                        <td><?= $tbl[1] ?></td>
-                        
-                        <!-- linha abaixo converte formato da $tbl[3] usando 2 casas após a virgula e aplicando , ao lugar de ponto -->
-                        <td>R$ <?= number_format($tbl[3], 2, ',', '.') ?></td>
-                        <td><img src="data:image/jpeg;base64,<?= $tbl[6] ?>" alt="imagem" width="100px" height="100px"></td>
-
-                        <td style="display: flex; margin-top: 25px;"><a href="verproduto.php?id=<?= $tbl[0] && $tbl[2] ?>"><input type="button" value="VER PRODUTO"></a></td>
-
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>DESCRIÇÃO</th>      
+                        <th>PRECO</th>
+                        <th>IMAGEM</th>
+                        <th>VER PRODUTO</th>
                     </tr>
-                <?php
-                }
-                ?>
-            </table>
-        </div>
-    </form>
+                    <?php
+                    #Preenchimento da tabela com os dados do banco
+                    while ($tbl = mysqli_fetch_array($resultado)) {
+                    ?>
+                        <tr>
+                            <td><?= $tbl[0] ?></td>
+                            <td><?= $tbl[1] ?></td>
+                            <td><?= $tbl[2] ?></td>
+                            
+                            <!-- linha abaixo converte formato da $tbl[3] usando 2 casas após a virgula e aplicando , ao lugar de ponto -->
+                            <td>R$ <?= number_format($tbl[3], 2, ',', '.') ?></td>
+                            <td><img src="data:image/jpeg;base64,<?= $tbl[6] ?>" alt="imagem" width="100px" height="100px"></td>
 
-</body>
+                            <td style="display: flex; margin-top: 25px;"><a href="verproduto.php?id=<?= $tbl[0] && $tbl[2] ?>"><input type="button" value="VER PRODUTO"></a></td>
+
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
+        </form>
+
+    </body>
 
 </html>

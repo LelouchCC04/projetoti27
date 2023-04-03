@@ -62,7 +62,7 @@ while ($tbl = mysqli_fetch_array($resultado)) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -73,6 +73,8 @@ while ($tbl = mysqli_fetch_array($resultado)) {
 </head>
 
 <body>
+    <a href="loja.php"><input type="button" id="loja" value="VOLTAR PARA A LOJA"></a>
+
     <div>
         <form action="verproduto.php" method="post">
             <input type="hidden" name="idproduto" value="<?= $idproduto ?>" required>
